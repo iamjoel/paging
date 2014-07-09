@@ -1,6 +1,5 @@
-define(['text!./paging-template.html', 'css!./ractivepaging'], function(template) {
-    var config = {
-    };
+define(['text!paging-template', 'css!paging-css'], function(template) {
+    var config = {};
     var defaultParam = {
         'showPagingNavNum': 5,
         'pageAt': 1,
@@ -23,7 +22,7 @@ define(['text!./paging-template.html', 'css!./ractivepaging'], function(template
             el: param.el,
             template: template,
             data: {
-            	pageNum: param.pageNum,
+                pageNum: param.pageNum,
                 pageAt: param.pageAt,
                 pageArray: makePageArray(param.pageAt, param.pageNum, param.showPagingNavNum),
                 getStatus: function(index, pageAt) {
@@ -39,7 +38,7 @@ define(['text!./paging-template.html', 'css!./ractivepaging'], function(template
         });
 
         this.paging.on('changePage', function(event) {
-            var pageAt = parseInt($(event.node).text(), 10);
+            var pageAt = parseInt($(event.node).data('index'), 10);
             changPage(pageAt);
         });
 
@@ -52,7 +51,7 @@ define(['text!./paging-template.html', 'css!./ractivepaging'], function(template
 
         this.paging.on('nextPage', function(event) {
             var pageAt = this.get('pageAt') + 1;
-            if (pageAt <= param.pageNum) {
+            if (pageAt <= self.paging.get('pageNum')) {
                 changPage(pageAt);
             }
         });
@@ -73,7 +72,7 @@ define(['text!./paging-template.html', 'css!./ractivepaging'], function(template
     };
 
     Paging.prototype.updatePageNav = function() {
-    	var param = this.param;
+        var param = this.param;
         this.paging.set('pageArray', makePageArray(this.paging.get('pageAt'), this.paging.get('pageNum'), param.showPagingNavNum));
     };
 
@@ -95,17 +94,23 @@ define(['text!./paging-template.html', 'css!./ractivepaging'], function(template
         var array = [];
         var start;
         var end;
-        if(pageAt - parseInt(showPagingNavNum / 2, 10) <= 0){
-        	start = 1;
-        } else if(pageAt + parseInt(showPagingNavNum / 2, 10) > pageNum){
-        	start = pageNum - showPagingNavNum + 1;
+        if (pageNum <= showPagingNavNum) { // 全部显示
+            start = 1;
+            end = pageNum + 1;// 因为不包括end
         } else {
-			start = pageAt - parseInt(showPagingNavNum / 2, 10);
+            if (pageAt - parseInt(showPagingNavNum / 2, 10) <= 0) {
+                start = 1;
+            } else if (pageAt + parseInt(showPagingNavNum / 2, 10) > pageNum) {
+                start = pageNum - showPagingNavNum + 1;
+            } else {
+                start = pageAt - parseInt(showPagingNavNum / 2, 10);
+            }
+            end = start + showPagingNavNum;
+            if (end >= pageNum + 1) {
+                end = pageNum + 1;
+            }
         }
-        end = start + showPagingNavNum;
-        if(end >= pageNum + 1){
-        	end = pageNum + 1;
-        }
+
         for (var i = start; i < end; i++) {
             array.push(i);
         }
