@@ -71,6 +71,11 @@ define(['text!paging-template', 'css!paging-css'], function(template) {
         this.updatePageNav();
     };
 
+    Paging.prototype.setPageAt = function(pageAt) {
+        this.paging.set('pageAt', pageAt);
+        this.updatePageNav();
+    };
+
     Paging.prototype.updatePageNav = function() {
         var param = this.param;
         this.paging.set('pageArray', makePageArray(this.paging.get('pageAt'), this.paging.get('pageNum'), param.showPagingNavNum));
