@@ -38,7 +38,7 @@ define(['text!paging-template', 'css!paging-css'], function(template) {
         });
 
         this.paging.on('changePage', function(event) {
-            var pageAt = parseInt($(event.node).data('index'), 10);
+            var pageAt = parseInt($(event.node).attr('data-index'), 10);
             changPage(pageAt);
         });
 
