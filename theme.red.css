@@ -1,0 +1,22 @@
+.paging li{
+}
+.paging li a, .paging li span{
+	border:none;
+	background: #585858;
+	margin-right: 10px;
+}
+.paging li a{
+	color: #fff;
+}
+.paging .current a, .paging .current span, .paging .current a:hover, .paging .current span:hover, .paging .current a:focus, .paging .current span:focus{
+	background: #b91921;
+}
+.paging .last-page{
+	margin-right: 0;
+}
+.paging .disabled span, .paging .disabled span:hover, .paging .disabled span:focus, .paging .disabled a, .paging .disabled a:hover, .paging .disabled a:focus{
+	background: #585858;
+}
+.paging li a:hover, .paging li span:hover, .paging li a:focus, .paging li span:focus {
+    background-color: #b91921;
+}
