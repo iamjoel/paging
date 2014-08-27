@@ -1,15 +1,42 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>requirejs demo</title>
+    <title>paging demo</title>
+    <link rel="stylesheet" href="jquery.paging.css">
     <script src='vendor/jquery-1.10.2.js'></script>
-    <script src='vendor/ractive.js'></script>
-    <script src='vendor/requirejs.js'></script>
 </head>
+
 <body>
-	<div id="paging-odd-wrap"></div>
-	<div id="paging-even-wrap"></div>
-	<script src="demo.js"></script>
+    <div id="paging-odd-wrap" style="text-align:center;"></div>
+    <label>跳到第
+        <select id="page-num">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+			<option value="11">11</option>
+			<option value="12">12</option>
+			<option value="13">13</option>
+			<option value="14">14</option>
+			<option value="15">15</option>
+			<option value="16">16</option>
+			<option value="17">17</option>
+			<option value="18">18</option>
+			<option value="19">19</option>
+			<option value="20">20</option>
+        </select>页
+    </label>
+    <div id="paging-even-wrap"></div>
+    <script src="jquery.paging.js"></script>
+    <script src="demo.js"></script>
 </body>
+
 </html>

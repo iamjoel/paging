@@ -1,26 +1,17 @@
-require.config({
-    paths: { // 配置路径的缩写
-        paging: 'ractive-paging',
-        'paging-template': './paging-template.html',
-        'paging-css': './ractive-paging'
-    },
-    map: { // 配置插件
-        '*': {
-            'css': 'vendor/require-css', // 加载css插件
-            'text': 'vendor/require-text' // 加载模板文件插件
+$(document).ready(function () {
+    var pager = $('#paging-odd-wrap').paging({
+        pageNum: 20,
+        onPageChange: function(pageAt){
+            console.log(pageAt);
         }
-    }
-});
-
-require(['paging'], function(Paging) {
-    var paging = new Paging({
-        el: 'paging-odd-wrap',
-        pageNum: 10
     });
-
-    var paging = new Paging({
-        el: 'paging-even-wrap',
-        pageNum: 10,
+    var $selectPager = $('#page-num');
+    $selectPager.change(function(){
+        pager.setPageAt(parseInt(this.value, 10));
+    });
+    $('#paging-even-wrap').paging({
+        pageNum: 4,
         showPagingNavNum: 6
     });
 });
+

@@ -1,2 +1,2 @@
-# ractive-paging
-基于ractive的分页
+# paging
+基于jquery的分页
