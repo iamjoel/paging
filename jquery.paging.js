@@ -90,9 +90,10 @@
         this.$el.find('[data-id='+ 1 +']').closest('li').addClass('current');
         this.updatePageNav();
     };
-    Paging.prototype.setPageNum = function(pageNum) {
+    Paging.prototype.setPageNum = function(pageNum, pageAt) {
         this.pageNum = pageNum;
-        this.setPageAt(1);
+        pageAt = pageAt || 1;
+        this.pageAt = pageAt;
         this.update();
     };
 
